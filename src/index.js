@@ -334,7 +334,10 @@ const createMarkdownPlugin = (_config = {}) => {
           return null;
       }
     },
-    onTab(ev, { getEditorState, setEditorState }) {
+    keyBindingFn(ev, { getEditorState, setEditorState }) {
+      if (ev.keyCode != 9 /* tab */) {
+        return;
+      }
       const editorState = getEditorState();
       const newEditorState = adjustBlockDepth(editorState, ev);
       if (newEditorState !== editorState) {

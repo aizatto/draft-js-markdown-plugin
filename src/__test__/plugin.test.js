@@ -458,7 +458,7 @@ describe("draft-js-markdown-plugin", () => {
         beforeEach(() => {
           subject = () => {
             createMarkdownPlugin.__Rewire__("adjustBlockDepth", modifierSpy); // eslint-disable-line no-underscore-dangle
-            return plugin.onTab(event, store);
+            return plugin.keyBindingFn({ keyCode: 9, ...event }, store);
           };
         });
         describe("no changes", () => {
